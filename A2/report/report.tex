@@ -1,0 +1,154 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{titling}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx,ragged2e}
+\newcommand\tab[1][0.5in]{\hspace*{#1}}
+\lstset{breaklines = true}
+\hypersetup{colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    unicode=false}
+\begin {document}
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+\renewcommand\baselinestretch{1.0}
+\pagestyle {plain}
+\pagenumbering{arabic}
+\newcounter{stepnum}
+\title {Assignment 2 report} 
+\author {Amit Binu}
+\date { binua }
+\maketitle
+\newpage
+\lstset{language=Python, basicstyle=\tiny,breaklines=true,showspaces=false,showstringspaces=false,breakatwhitespace=true}
+\def\thesection{\Alph{section}} 
+\section{Code for pointADT.py} \label{PointADT}
+\noindent \lstinputlisting{C:/Users/ankita_binu/Documents/Assignment2/pointADT.py}
+\newpage
+\section{Code for LineADT} \label{LineADT.py}
+\noindent \lstinputlisting{C:/Users/ankita_binu/Documents/Assignment2/lineADT.py}
+\newpage
+\section{Code for CircleADT.py} \label{CircleADT.py}
+\noindent \lstinputlisting{C:/Users/ankita_binu/Documents/Assignment2/circleADT.py}
+\newpage
+\section{Code for Deque.py} \label{Deque.py}
+\noindent \lstinputlisting{C:/Users/ankita_binu/Documents/Assignment2/deque.py}
+\newpage
+\section{Code for testCircleDeque} \label{testCircleDeque.py}
+\noindent \lstinputlisting{C:/Users/ankita_binu/Documents/Assignment2/testCircleDeque.py}
+\newpage
+\section{Makefile} \label{MakefileSect}
+\lstset{language=make}
+\noindent \lstinputlisting{Makefile}
+\newpage
+\newpage
+\lstset{language=Python, basicstyle=\tiny,breaklines=true,showspaces=false,showstringspaces=false,breakatwhitespace=true}
+\def\thesection{\Alph{section}} 
+\section{Partner's Code for CircleADT.py} \label{CircleADTSect}
+\noindent \lstinputlisting{C:/Users/ankita_binu/Documents/Assignment2/partner/circleADT.py}
+\newpage
+\section{Result of test cases} \label{ResultsSect}
+
+\title This was the result when my files were used to run the test module
+\begin{itemize} 
+
+
+\item Ran 28 tests in 0.124 seconds
+\item However, for the last test method, nothing was implemented. 
+
+
+\end{itemize}
+
+
+\title Results when partner's circleADT was used
+
+\begin{itemize}
+
+\item 27 tests passed
+\item 1 test failed
+\item One test failed because in partner's circleADT.py file, the insidecircle global function was not implemented.
+\item A picture of the output for running the partner's file has been shown in the next page.
+
+\end{itemize}
+
+\newpage
+
+
+
+\begin{figure}
+\begin{center}
+{
+\includegraphics [width=0.5\textwidth]{C:/Users/ankita_binu/Documents/Assignment2/Capture.pdf}
+}
+\caption{\label{Fig_CircleBoxIntersect} Result when partner's  circleADT.py was used}
+\end{center}
+\end{figure}
+
+
+\newpage
+\section{Discussion on Results} \label{DisscusionSect}
+\title When my files were used to run the testcircldeque module, the results were all correct. No errors were found when this was run
+\begin{itemize}
+\item In the rot() method, that was used in the pointADT module, round function was used. This was used so that, when sin and cos of values were calculated using math library, it will print a more precise answer.
+\item For example, when cos(pi) was implemented, python was givng a number really close to 1 but not a 1 exactly. The round function, will round the value up or down, depending on the value.
+\item This was necessary to do since these values are used by other methods in other classes. This will also make the method more reliable and correct. 
+\item The validity of this method was verified by using 4 test cases for it that took 0 , positive and negative values. 
+\item For the test cases that were returning objects, I tested them by checking their xcoord() and ycood(). 
+\section {Issues with partner's file}
+\item When my partner's circleADT was used for testing, only one error was found. Like I said before, this was becasue my partner did not implement the insidecircle global function in his circleADT module.
+\section {Specifications of the modules}
+\item I personally liked the mis format of specifications since they are less ambiguous than the informal format that was used. 
+\item I learnt numerous things from doing this assignment. One of them was using the PYunit for test cases. Using this was  so much more easier than typing the inpu and output for the last assignment. Pyunit will definetly help me to finish future projects in less time.
+\item  The MIS specification for this assignment also enables all the students to have a similar design for this assignment. This was one of the reasons why there was less errors when the partner's file was used, unlike the previous assignment.
+
+\end{itemize}
+\newpage
+
+
+\begin{figure}
+\begin{center}
+\includegraphics [width=0.5\textwidth]{C:/Users/ankita_binu/Documents/Assignment2/eq1.pdf}
+\caption{\label{Fig_CircleBoxIntersect} Specification for Deq\_totalArea()}
+
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+
+\includegraphics [width=0.5\textwidth]{C:/Users/ankita_binu/Documents/Assignment2/eq2.pdf}
+\caption{\label{Fig_CircleBoxIntersect} Specification for Deq\_averageRadius()}
+\end{center}
+\end{figure}
+
+\newpage
+\section{Critique on Circle Module's interface} \label{CritiqueSect}
+\begin{itemize}
+\item For the most part, CircleADT module is pretty consistent. Some of the mehtod's naming were shortened. Methods like cen() and rad() should have been named center() and radius() to make it more consistent.
+\item This module is pretty essential since all the methods in this module is useful.
+\item  This module is also general since a user can use this module for other purposes. However, this module is dependednt on lineADT and pointADT. If lineADT and pointADT were implemeted in CircleADT as classes, it would have been more general.
+\item  Since no routines had 2 or more seperate functions /services to implement, this module is mininmal. 
+\item This module was also opaque since if the user wants to change something, the user wouldn't have to change the whole module. Python does not support information hiding, but this can be partialy done by making certain methods private. This was not done since there was no purpose to do it in this module. The user can only change the values by calling the methods.
+
+\newpage
+\section{Deq\_disjoint() when there is one circle} \label{DequeSect}
+\begin{itemize}
+\item When there is one circle in the deque, the output of the mathematical expresion will be True. This is becasue when there is one circle in the deque, the deque's length will be 1. In the mathematical expression, 'i' will go from 0 to 0 and 'j' will go from 0 to 0. So the value of i and j will be 0. SInce the values of i and j are the same, it will unsatisfy the last condition. Therefore, the result will be true. This is the same result, my code will return when there is only one circle in the deque.
+\end{itemize}
+\end{itemize}
+
+\end {document}
