@@ -1,0 +1,225 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{hyperref}
+\lstset{breaklines = true}
+\hypersetup{colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    unicode=false}
+
+\begin {document}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+\renewcommand\baselinestretch{1.0}
+\pagestyle {plain}
+\pagenumbering{arabic}
+\newcounter{stepnum}
+
+
+\title {Assignment 1 report} 
+\author {Amit Binu}
+\date { binua }
+
+\maketitle
+\newpage
+\lstset{language=Python, basicstyle=\tiny,breaklines=true,showspaces=false,showstringspaces=false,breakatwhitespace=true}
+\def\thesection{\Alph{section}} 
+\section{Code for CircleADT.py} \label{CircleSect}
+\noindent \lstinputlisting{CircleADT.py}
+
+
+\newpage
+\section{Code for Statistics.py} \label{StatisticsSect}
+\noindent \lstinputlisting{Statistics.py}
+
+\newpage
+\section{Code for testCircles.py} \label{testSect}
+\noindent \lstinputlisting{testCircles.py}
+
+\newpage
+\section{Makefile} \label{MakefileSect}
+\lstset{language=make}
+\noindent \lstinputlisting{Makefile}
+\newpage
+
+\newpage
+\lstset{language=Python, basicstyle=\tiny,breaklines=true,showspaces=false,showstringspaces=false,breakatwhitespace=true}
+\def\thesection{\Alph{section}} 
+\section{Partner's Code for CircleADT.py} \label{CircleADTSect}
+\noindent \lstinputlisting{../Assignment/Partnerfiles/CircleADT.py}
+
+\newpage
+\lstset{language=Python, basicstyle=\tiny,breaklines=true,showspaces=false,showstringspaces=false,breakatwhitespace=true}
+\def\thesection{\Alph{section}} 
+\section{Partner's Code for Statistics.py} \label{StatisticsSect}
+\noindent \lstinputlisting{../Assignment/Partnerfiles/Statistics.py}
+
+\newpage
+\section{Results of testing my files} \label{ResultsSect}
+
+\title  \tt{ CircleADT.py}
+\newline 
+\newline method: xccord()
+\newline input: CircleADT.CircleT(5,4,3).xcoord()
+\newline output: 5
+\newline
+\newline method: ycoord()
+\newline input: print CircleADT.CircleT(5,4.0,3).ycoord()
+\newline output: 4
+\newline
+\newline method: radius()
+\newline input: print CircleADT.CircleT(5,4.0,3).radius()
+\newline output: 3
+\newline
+\newline method: area()
+\newline input: print CircleADT.CircleT(5,4.0,3).area()
+\newline Output: 28.2743338823
+\newline
+\newline method: radius()
+\newline input:  print CircleADT.CircleT(5,4.0,3.0).circumference()
+\newline output: 18.8495559215
+\newline 
+\newline method: insidebox
+\newline input: CircleADT.CircleT(80,20,0).insidebox(10,20,10,10)
+\newline Output: False
+\newline
+\newline method: intersect
+\newline input: CircleADT.CircleT(0,0,5).intersect(3,0,5)
+\newline Output: True
+\newline
+\newline method: scale
+\newline input: h = CircleADT.CircleT(0,0,5); h.scale(8); h.radius()
+\newline Output: 40
+\newline
+\newline method: translate
+\newline input: h = CircleADT.CircleT(0,0,40)     print h.xcoord(), h.ycoord()
+\newline Output: 5    6
+
+\newpage
+Statistics.py
+\newline 
+\newline method: average
+\newline input: Statistics.average([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5),
+\newline  CircleADT.CircleT(5,5,11),CircleADT.CircleT(2,3,9)])
+\newline Output: 7.75
+\newline
+\newline method: StdDev
+\newline input: Statistics.stdDev([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5),
+\newline CircleADT.CircleT(5,5,11), CircleADT.CircleT(2,3,9)])
+\newline output: 2.38484800354
+\newline
+\newline method: rank
+\newline input: Statistics.rank([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5),
+\newline CircleADT.CircleT(5,5,11), CircleADT.CircleT(2,3,9)])
+\newline Output: [ 3, 4, 1, 2]
+
+\newpage
+\section{Results of testing my files  with the partner's files} \label{MixedResultsSect}
+
+
+\title  \tt{ my CircleADT.py and his Statistics.py}                   %TEST
+\newline CircleADT.py will have the same results as above since it is not changed
+\newline
+\newline Statistics.py
+\newline 
+\newline method: average
+\newline input: Statistics.average([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5),
+\newline CircleADT.CircleT(5,5,11), CircleADT.CircleT(2,3,9)])
+\newline Output: error
+\newline
+\newline method: StdDev
+\newline input: Statistics.stdDev([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5)
+\newline ,CircleADT.CircleT(5,5,11),  CircleADT.CircleT(2,3,9)])
+\newline output: error
+\newline
+\newline method: rank
+\newline input: Statistics.rank([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5)
+\newline ,CircleADT.CircleT(5,5,11), CircleADT.CircleT(2,3,9)])
+\newline Output: error
+
+\newpage
+\title  \tt{ my Statistics.py and his CircleADT.py}                   %TEST
+\newline
+\newline CircleADT.py
+\newline
+\newline method: xccord()
+\newline input: CircleADT.CircleT(5,4,3).xcoord()
+\newline output: 5
+\newline
+\newline method: ycoord()
+\newline input: print CircleADT.CircleT(5,4.0,3).ycoord()
+\newline output: 4
+\newline
+\newline method: radius()
+\newline input: print CircleADT.CircleT(5,4.0,3).radius()
+\newline output: error
+\newline
+\newline method: area()
+\newline input: print CircleADT.CircleT(5,4.0,3).area()
+\newline Output: error - his area takes a parameter 
+\newline
+\newline method: radius()
+\newline input:  print CircleADT.CircleT(5,4.0,3.0).circumference()
+\newline output: error - his circumference method takes a parameter
+\newline 
+\newline method: insidebox
+\newline input: CircleADT.CircleT(80,20,0).insidebox(10,20,10,10)
+\newline Output: error - my insidebox method was named wrongly. 
+\newline
+\newline method: intersect
+\newline input: CircleADT.CircleT(0,0,5).intersect(3,0,5)
+\newline Output: error - his method takes 2 arguements. 
+\newline
+\newline method: scale
+\newline input: h = CircleADT.CircleT(0,0,5); h.scale(8); h.radius()
+\newline Output: error - his method takes 2 arguements
+\newline
+\newline method: translate
+\newline input: h = CircleADT.CircleT(0,0,40); h.translate(5,6)    print h.xcoord(), h.ycoord()
+\newline Output: error - his method takes 3 arguements
+\newline
+\newline Statistics.py
+\newline 
+\newline method: average
+\newline input: Statistics.average([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5),
+\newline CircleADT.CircleT(5,5,11), CircleADT.CircleT(2,3,9)])
+\newline Output: 7.75
+\newline
+\newline method: StdDev
+\newline input: Statistics.stdDev([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5)
+\newline ,CircleADT.CircleT(5,5,11),  CircleADT.CircleT(2,3,9)])
+\newline output: 2.38484800354
+\newline
+\newline method: rank
+\newline input: Statistics.rank([CircleADT.CircleT(11, 12, 6),CircleADT.CircleT(10,10,5)
+\newline ,CircleADT.CircleT(5,5,11), CircleADT.CircleT(2,3,9)])
+\newline Output: [3, 4, 1, 2]
+
+\newpage
+\section{Discussion on Results} \label{DisscusionSect}
+\begin{itemize}
+\item When my CircleADT and my partner's Statistics was used, all the outputs were errors. 
+This is because in my partner's Statistics.py, a class called Statistics was made and this class contains all the functions. However, the rquirement was to only  make functions. Also, wrong name was used for radius method in CircleADT.
+
+\item When my {\tt Statistics.py} and my partner's {\tt CircleADT.py} were used to run to do the testing, some peculiar results were observed. First of all, only some methods in CircleADT ran properly without throwing any errors. However, some did not print the appropriate
+outputs and those methods were radius, area, circumference, insidebox, intersect, scale, translate. 
+\item Area, Circumference, intersect, scale and translate methods did not run properly because in his CircleADT these methods had an extra paramter for taking CircleADT objects.
+It was not specified in the requirement to have circle objects as a parameter in any of these methods,so none of these methods in my CircleADT took a CircleADT object as a parameter. 
+\item The insideBox method did not ran properly because it was spelt wrongly in my CircleADT file.
+I spelt it as insidebox instead of insideBox. 
+\item The radius method did not work becasause in my partner's CircleADT file, it was named as rcoord(). However in mine it was radius() because it is specified in the requirements to name it radius(). 
+\item Wrong name for the radius method caused to give only errors, when my {\tt CircleADT.py} and my partner's {\tt Statistics.py} was used to test the methods in Statistics.py. 
+\end{itemize}
+
+\newpage
+\section{Using Pi} \label{PiSect}
+The constant of Pi was used to calculate the area and circumference of the circle. This was achieved by importing the math library. Using this constant will not give a perfect answer, since it will not print all the decimals. 
+This is because the value of Pi from the math library only has 10 decimals. However, the actual value  has quadrillian decimals. Therefore, the result obtained from the area and circumference method is not absolutely perfect. 
+\end {document}
