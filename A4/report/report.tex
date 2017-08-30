@@ -1,0 +1,574 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{titling}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx,ragged2e}
+\newcommand\tab[1][0.5in]{\hspace*{#1}}
+
+
+\lstset{
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\small\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{Red},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  % escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{BurntOrange},       % keyword style
+  language=python,                 % the language of the code
+  morekeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (None, left, right)
+  numbersep=10pt,                   % how far the line-numbers are from the code
+  numberstyle=\color{Gray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=5,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{Green},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=Brown,
+  unicode=true,
+  filecolor=Purple,      
+  urlcolor=cyan,
+  pdftitle={SWR ENG 2AA4 ASSIGNMENT 4},
+  pdfauthor={AMIT BINU - binua},
+  pdfstartpage=1,
+}
+
+\title{SWR ENG 2AA4 ASSIGNMENT 4}
+\author{AMIT BINU - binua}
+
+\renewcommand*\contentsname{Table of Contents}
+
+\begin{document}
+\makeatletter
+\vspace*{8em}
+\noindent
+\hfil\parbox[t]{1\textwidth}{\centering\Huge\bfseries{SWR ENG 2AA4}\\[0.5ex]{Assignment 4}}\par
+\kern0.6cm \hrule\kern0.4cm
+\noindent
+\hfil\parbox[t]{1\textwidth}{\centering\large\bfseries\@author\\[2ex]\@date}\par
+\kern0.3cm \hrule\kern0cm
+\makeatother
+\newpage
+%
+%{\centering
+%  \tableofcontents\par
+%}
+%\addtocontents{toc}{\protect\vspace{2.5em}}
+\newpage
+
+\section* {Constants Module}
+
+\subsection*{Module}
+
+Constants
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+MAX\_X= 9 {\it //max length of the grid in the x-direction}\\
+MAX\_Y = 9{\it //max length of the grid in the y-direction}\\
+MIN\_SIZE = 2 {\it //minimum ship size, like specified in the specifications}\\
+MAX\_SIZE = 5 {\it //minimum ship size, like specified in the specifications}
+
+
+\subsubsection* {Exported Access Programs}
+
+None
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\newpage
+
+\section* {Point ADT Module}
+
+\subsection*{Template Module}
+
+PointT
+
+\subsection* {Uses}
+
+Constants
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+PointT = ?
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+PointT & integer, integer & PointT & InvalidPointException\\
+\hline
+xcrd & ~ & integer & ~\\
+\hline
+ycrd & ~ & integer & ~\\
+\hline
+dist & PointT & real & ~\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$xc$: integer\\
+$yc$: integer
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions}
+The constructor PointT is called for each abstract object before any other access routine is called for that
+object.  The constructor cannot be called on an existing object.
+
+\subsubsection* {Access Routine Semantics}
+
+PointT($x, y$):
+\begin{itemize}
+\item transition: $xc, yc := x, y$
+\item output: $out := \mathit{self}$
+\item exception:
+ $exc := ((\neg(0 \leq x \leq \mbox{Contants.MAX\_X}) \vee \neg(0 \leq y \leq \mbox{Constants.MAX\_Y})) \Rightarrow
+\mbox{InvalidPointException})$
+\end{itemize}
+
+\noindent xcrd():
+\begin{itemize}
+\item output: $out := xc$
+\item exception: None
+\end{itemize}
+
+\noindent ycrd():
+\begin{itemize}
+\item output: $out := yc$
+\item exception: None
+\end{itemize}
+
+\noindent dist($p$):
+\begin{itemize}
+\item output: $out := \sqrt{(\mathit{self}.xc - p.xc)^2 + (\mathit{self}.yc - p.yc)^2}$
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {Ship ADT Module}
+
+\subsection*{Template Module}
+
+ShipT
+
+\subsection* {Uses}
+
+Constants, PointT
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+ShipT = ?
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+ShipT & PointT, PointT, integer & ShipT & InvalidShipException\\
+\hline
+FirstPoint & ~ & PointT & ~\\
+\hline
+SecondPoint & ~ & PointT & ~\\
+\hline
+Size & ~ & integer & ~\\
+\hline
+list & integer & list & ~\\
+\hline
+%sunk & ~ & boolean & ~\\
+%\hline
+%add\_hit & ~ & ~ & ~\\
+%\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$FirstPoint$: PointT\\
+$SecondPoint$: PointT\\
+$size$: integer\\
+$list$: sequence of PointT
+
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions}
+The constructor ShipT is called for each abstract object before any other access routine is called for that
+object.  The constructor cannot be called on an existing object.
+
+\subsubsection* {Access Routine Semantics}
+
+ShipT($first, second$):
+\begin{itemize}
+\item transition: $FirstPoint, SecondPoint, size,list := first, second, first.dist(second), <>$
+% \item transition: $start, end, length, counter := one, two, length, 0$
+\item output: $out := \mathit{self}$
+\item exception:
+ $exc := ((first.dist(second)< \mbox{Constants.MIN\_SIZE}) \lor (first.dist(second) > \mbox{Constants.MAX\_SIZE})   \lor ((first.\mbox{xcrd}() \neq second.\mbox{xcrd}()) \land (first.\mbox{ycrd}() \neq second.\mbox{ycrd}())) \Rightarrow \mbox{InvalidShipException})$
+\end{itemize}
+
+%\land (first.ycrd() \lneq second.ycrd() )
+\noindent firstPoint():
+\begin{itemize}
+\item output: $out := FirstPoint$
+\item exception: None
+\end{itemize}
+
+\noindent secondPoint():
+\begin{itemize}
+\item output: $out := SecondPoint$
+\item exception: None
+\end{itemize}
+
+\noindent SIZE():
+\begin{itemize}
+\item output: $out := size$
+\item exception: None
+\end{itemize}
+
+\noindent list(count):
+\begin{itemize}
+\item transition: $ \forall(i : \mathbb{I} | first.\mbox{xcrd}() \leq i \leq second.\mbox{xcrd}() : \forall(j : \mathbb{I} | first.\mbox{ycrd}() \leq j \leq second.\mbox{ycrd}(): list[count++] := PointT(i++,j++)))$
+\item output: list
+\item exception: None
+\end{itemize}
+
+%
+%\noindent sunk():
+%\begin{itemize}
+%\item output: $out := (counter = length)$
+%\item exception: None
+%\end{itemize}
+%
+%\noindent add\_hit():
+%\begin{itemize}
+%\item transition: $counter := counter + 1$
+%\item exception:$exc := ((counter = length) \Rightarrow \mbox{SunkException})$
+%\end{itemize}
+
+\newpage
+
+\section* {Game Status ADT Module}
+
+\subsection* {Template Module}
+
+GameStatusT
+
+\subsection* {Uses}
+
+Constants, PointT, ShipT
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+GameStateT = ?
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+GameStatusT & sequence of ShipT & GameStatusT & InvalidPositionException\\
+\hline
+is\_hit & PointT & boolean & ~\\
+\hline
+is\_game\_over & ~ & boolean & ~\\
+\hline
+
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+% $ship\_Board$: boardT\\
+$ListOfships$: sequence of ShipT\\
+$guess$: sequence of integer
+$count$: an integer
+% $board$: boardT
+% $hit\_Board$: boardT\\
+
+\subsubsection* {State Invariant}
+None
+
+\subsubsection* {Assumptions}
+The GameStatusT() constructor is called for each abstract object before any other access routine is called for that
+object.  The constructor can only be called once.
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent GameStateT($list$):
+\begin{itemize}
+\item transition: $ListOfships, guess := list, <>$
+%{\raggedright
+%  \\\tab $ships, board := list,$\par
+%}
+%$
+%< \begin{array}{c}
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%< \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE}, \mbox{FALSE} >\\
+%\end{array} >
+%$
+\item output: $\mathit{out} := \mathit{self}$
+\item exception: 
+\begin{eqnarray*}
+\lefteqn{exc := ((|list| \neq 5) \lor (\exists ( i : \mathbb{I} | 0 \leq i < |list| : list[i].SIZE() < 2 \lor list[i].SIZE() >5))}\\
+& &  \lor  ShipLength(0) \neq 2 \lor \\
+& &  (\exists( i : \mathbb{I} | 0 \leq i < |list| : \exists( j : \mathbb{I} | (0 \leq j < |list|) \land (i \neq j) :\\
+& &   \mbox{collision}(list[i], list[j]))))) \Rightarrow \mathrm{InvalidPositionException}
+\end{eqnarray*}
+\end{itemize}
+
+\noindent is\_hit($p$):
+\begin{itemize}
+
+
+\item transition:
+\begin{eqnarray*}
+\lefteqn{ \exists( i : \mathbb{I} | 0 \leq i < |ships| :} \\
+& &    \mbox{pointInLine}(p, ListOfships[i].\mbox{firstPoint}(), ListOfships[i].\mbox{secondPoint}()) \\
+& &    \Rightarrow guess[i] := guess[i] + 1)
+\end{eqnarray*}
+% $guess[i] := guess[i] + 1$
+
+\item output:
+\begin{eqnarray*}
+\lefteqn{  out := \exists( i : \mathbb{I} | 0 \leq i < |ships| :} \\
+& &    \mbox{pointInLine}(p, ListOfships[i].\mbox{firstPoint}(), ListOfships[i].\mbox{secondPoint}()))
+%& &  
+\end{eqnarray*}
+\item exception: None
+\end{itemize}
+
+\noindent is\_game\_over():
+\begin{itemize}
+\item output: $out := \forall( i : \mathbb{I} | 0 \leq i < |ListOfships| : ListOfships[i].\mbox{SIZE}() \equiv guess[i])$
+\item exception: None
+\end{itemize}
+
+\noindent ships():
+\begin{itemize}
+\item output: $out := ListOfships$
+\item exception: None
+\end{itemize}
+
+\subsubsection* {Local Functions}
+
+
+\textbf{ShipLength} : Integer $\rightarrow$ Integer\\
+
+~\newline
+ShipLength(count):
+~\newline
+\begin{itemize}
+\item $\exists ( i : \mathbb{I} | 0 \leq i < |GameStatustT.ships()| : GameStatustT.ships()[i].SIZE() \equiv  3 \rightarrow count++))$
+\item output: $out$ := count
+\end{itemize}
+~\newline
+
+\textbf{pointInLine} : PointT $\times$ PointT $\times$ PointT $\rightarrow$ boolean\\
+~\newline
+pointInLine$(p, start, end) \equiv (start.\mbox{dist}(p) + end.\mbox{dist}(p) = start.\mbox{dist}(end))$
+
+~\newline
+
+\noindent \textbf{collision} : ShipT $\times$ ShipT $\rightarrow$ boolean\\
+~\newline
+collision(one,two) $ \equiv  \forall (i : \mathbb{I} | 0 \leq i \leq |one.list(0)| : \forall (j : \mathbb{I} | 0 \leq j \leq |two.list(0)| : one.list(0)[i].\mbox{xcrd}() \equiv second.list(0)[j].\mbox{xcrd}()  \land one.list(0)[i].\mbox{ycrd}() \equiv second.list(0)[j].\mbox{ycrd}())) $
+
+~\newline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section* {Battleship Module}
+
+\subsection* {Module}
+
+Battleship
+
+\subsection* {Uses}
+
+Constants, PointT, ShipT, GameStateT
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{7cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & ~ & ~ & ~\\
+\hline
+move & integer, integer, cellT & ~ & OutOfBoundsException, InvalidMoveException, WrongPlayerException\\
+\hline
+switch\_turn & ~ & ~ & ValidMoveExistsException\\
+\hline
+getb & integer, integer & cellT & OutOfBoundsException\\
+\hline
+get\_turn & ~ & cellT & ~\\
+\hline
+count & cellT & integer & ~\\
+\hline
+is\_valid\_move & integer, integer, cellT & boolean & OutOfBoundsException\\
+\hline
+is\_winning & cellT & boolean & ~\\
+\hline
+is\_any\_valid\_move & cellT & boolean & ~\\
+\hline
+is\_game\_over & ~ & boolean & ~\\
+\hline
+
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$made\_List$: sequence of PointT\\
+$hit\_List$: sequence of boolean\\
+$\mathit{player1}$: boolean
+$\mathit{player2}$: boolean
+
+\subsubsection* {Assumptions}
+
+The init method is called for the abstract object before any other access routine is called for that
+object.  The init method can be used to return the state of the game to the state of a new game.
+
+\subsubsection* {Access Routine Semantics}
+
+init():
+\begin{itemize}
+\item transition: 
+$\mathit{player1}, hit\_List, made \_List := \mathit{true}, <>,<>$
+%\item output: $out := \mathit{self}$
+\item exception
+none
+% $$exc := ((\neg(0 \leq x \leq \mbox{Contants.MAX\_X}) \vee \neg(0 \leq y \leq \mbox{Constants.MAX\_Y})) \Rightarrow
+%\mbox{InvalidPointException})$$
+\end{itemize}
+
+move($i$):
+\begin{itemize}
+\item transition: $\mathit{blacksturn} := \neg \mathit{blacksturn}$ and $b$ such that\\
+\mbox{ GameStatusT.is\_hit(i)} 
+\item exception
+$exc := (\mbox{InvalidPosition}(i, j) \Rightarrow \mbox{OutOfBoundsException} | \neg \mbox{is\_correctPlayer}(\mathit{[player1}, c) \Rightarrow
+\mbox{WrongPlayerException} )$
+\end{itemize}
+
+switch\_turn():
+\begin{itemize}
+\item transition: $\mathit{player1} := \neg \mathit{player1}$
+\item exception $exc := (\mbox{is\_any\_valid\_move}() \Rightarrow \mbox{ValidMoveExistsException}$)
+\end{itemize}
+
+get\_turn():
+\begin{itemize}
+\item output: $\mathit{out} := (\mathit{blacksturn} \Rightarrow \mbox{BLACK} | \neg \mathit{blacksturn} \Rightarrow
+\mbox{WHITE})$
+\item exception: none
+\end{itemize}
+
+is\_game\_over(): //{\it Returns true if neither player has a valid move}
+\begin{itemize}
+\item output: 
+out := GameStatustT.is\_game\_over()
+\item exception: none
+\end{itemize}
+
+\subsubsection* {Local Types}
+
+boardT = sequence [SIZE, SIZE] of cellT
+
+\subsubsection* {Local Functions}
+
+
+%\noindent \textbf{flip}: cellT $\rightarrow$ cellT\\
+%flip$(c) \equiv (c = \mbox{FREE} \Rightarrow \mbox{FREE} | c = \mbox{WHITE} \Rightarrow \mbox{BLACK} | c = \mbox{BLACK}
+%\Rightarrow \mbox{WHITE})$
+
+~\newline
+
+
+\noindent \textbf{InvalidPosition}: integer $\times$ integer $\rightarrow$ boolean\\
+~\newline
+InvalidPosition$(i, j) \equiv \neg ( ( 0 \leq i.\mbox{xcrd}()  < \mbox{Constants.MAX\_X} ) \wedge ( 0 \leq i.\mbox{ycrd}() \leq \mbox{Constants.MAX\_Y})
+\wedge ( 0 \leq j.\mbox{xcrd}()  < \mbox{Constants.MAX\_X} ) \wedge ( 0 \leq j.\mbox{ycrd}() \leq \mbox{Constants.MAX\_Y}))$
+
+~\newline
+
+\noindent \textbf{is\_correctPlayer}: boolean $\times$ cellT $\rightarrow$ boolean\\
+~\newline
+is\_correctPlayer$(bt, c) \equiv ( \mathit{bt} \Rightarrow c = \mbox{player1} | \neg \mathit{bt} \Rightarrow c = \mbox{player2}
+)$
+~\newline
+
+\end{document}
