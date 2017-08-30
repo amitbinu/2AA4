@@ -1,0 +1,32 @@
+
+package Assignment_3;
+
+
+
+/**
+ * <b> This class contains variables that are used by other modules to either calculate something or to check somehting.</b>
+ * @author Amit Binu
+ * @since 2017-03-20
+ */
+
+public class Constants {
+	/**
+	 * This variable is used by the Point module to check whether the inputed point's x coordinate is bigger than 180.
+	 */
+	public static int MAX_X = 180;
+	/**
+	 * This variable is used by the Point module to check whether the inputed point's y coordinate is bigger than 180.
+	 */ static int MAX_Y = 160;
+	 /**
+	  * This variable is used by the Region module to check whether the inputed point in pointInRegion routine is within the tolerance level.
+	  */
+	public static int TOLERANCE = 5;
+	 /**
+	  * This variable is used by the PathCalculation module to calculate the estimated linear time.
+	  */
+	public static int VELOCITY_LINEAR = 15;
+	 /**
+	  * This variable is used by the PathCalculation module to calculate the estimated angular time.
+	  */
+	public static int VELOCITY_ANGULAR = 30;
+}
